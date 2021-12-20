@@ -1,5 +1,7 @@
 import React from 'react';
-import Breakfast from '../../../components/Breakfast/Breakfast';
+import Breakfast from '../../AllItems/Breakfast/Breakfast';
+import Lunch from '../../AllItems/Lunch/Lunch';
+
 import styles from './FoodMenu.module.css';
 const FoodMenu = () => {
 	return (
@@ -12,7 +14,7 @@ const FoodMenu = () => {
 				environment suited to your need.
 			</p>
 			<div className={styles.wrapper}>
-				<Breakfast />
+				<Lunch />
 			</div>
 		</div>
 	);
