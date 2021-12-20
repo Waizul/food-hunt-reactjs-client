@@ -2,8 +2,12 @@ import React from 'react';
 import styles from './Navbar.module.css';
 import telImg from '../../image/sign/telephone.png';
 import cartImg from '../../image/sign/cart.png';
+import { Link, NavLink } from 'react-router-dom';
 
 const Navbar = () => {
+	const activeStyle = {
+		color: 'red',
+	};
 	return (
 		<div className={styles.container}>
 			<div className={styles.item}>
@@ -17,23 +21,34 @@ const Navbar = () => {
 			</div>
 			<div className={styles.item}>
 				<ul className={styles.list}>
-					<li className={styles.listItem}></li>
-					<li className={styles.listItem}>Home</li>
-					<li className={styles.listItem}>Products</li>
-					<li className={styles.listItem}>Menu</li>
-					<li className={styles.listItem}>Events</li>
-					<li className={styles.listItem}>Blog</li>
-					<li className={styles.listItem}>Contact</li>
+					<NavLink
+						to='/home'
+						className={styles.navlink}
+						activeStyle={activeStyle}
+					>
+						<li className={styles.listItem}>Home</li>
+					</NavLink>
+					<NavLink to='/items' className={styles.navlink}>
+						<li className={styles.listItem}>All Items</li>
+					</NavLink>
+					<NavLink to='blog' className={styles.navlink}>
+						<li className={styles.listItem}>Blog</li>
+					</NavLink>
 				</ul>
 			</div>
 			<div className={styles.item}>
-				<div className={styles.cart}>
-					<img src={cartImg} alt='cart' width='32' height='32' />
-				</div>
-				<div className={styles.counter}>2</div>
+				<Link to='/login'>
+					{' '}
+					<button className={styles.loginButton}>Login</button>
+				</Link>
 			</div>
 		</div>
 	);
 };
 
 export default Navbar;
+
+// <div className={styles.cart}>
+// 					<img src={cartImg} alt='cart' width='32' height='32' />
+// 				</div>
+// 				<div className={styles.counter}>2</div>
