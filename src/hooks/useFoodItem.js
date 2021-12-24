@@ -1,14 +1,16 @@
 import { useEffect, useState } from 'react';
 
-const useFoodItem = () => {
+const useFoodItem = (type) => {
 	const [foodItems, setFoodItems] = useState([]);
 
 	useEffect(() => {
-		fetch('/fooditems.json')
+		const url = `http://localhost:5000/items?type=${type}`;
+
+		fetch(`${url}`)
 			.then((res) => res.json())
 			.then((data) => setFoodItems(data));
-	}, []);
-	console.log(foodItems);
+	}, [type]);
+
 	return foodItems;
 };
 

@@ -3,6 +3,7 @@ import Breakfast from '../../AllItems/Breakfast/Breakfast';
 import Lunch from '../../AllItems/Lunch/Lunch';
 
 import styles from './FoodMenu.module.css';
+
 const FoodMenu = () => {
 	return (
 		<div className={styles.container}>

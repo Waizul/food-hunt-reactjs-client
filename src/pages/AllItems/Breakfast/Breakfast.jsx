@@ -3,13 +3,14 @@ import FoodCard from '../../../components/FoodCard/FoodCard';
 import useFoodItem from '../../../hooks/useFoodItem';
 
 const Breakfast = () => {
-	const items = useFoodItem();
+	const type = 'breakfast';
+	const items = useFoodItem(type);
 
 	return (
 		<>
 			<h2>Breakfast</h2>
 			<div className={styles.container}>
-				{items.slice(6, 12).map((item) => (
+				{items.map((item) => (
 					<FoodCard item={item} key={item.id} />
 				))}
 			</div>

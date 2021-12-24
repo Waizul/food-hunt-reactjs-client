@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './ServiceCard.module.css';
 const ServiceCard = ({ service }) => {
 	const { title, desc, img } = service;
-	console.log(service);
+
 	return (
 		<>
 			<div className={styles.wrapper}>
