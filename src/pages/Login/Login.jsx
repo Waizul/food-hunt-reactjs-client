@@ -1,17 +1,27 @@
 import React, { useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
+import useAuth from '../../hooks/useAuth';
+import Order from '../Order/Order';
 import styles from './Login.module.css';
 
 const initialState = {
 	fullName: '',
 	username: '',
+	email: '',
+	avatarUrl: '',
+	phoneNumber: '',
 	password: '',
 	confirmPassword: '',
-	phoneNumber: '',
 };
 
 const Login = () => {
 	const [form, setForm] = useState(initialState);
 	const [isSignup, setIsSignup] = useState(false);
+	const { signUp, signInUsingEmail, signInUsingGoogle, authError } =
+		useAuth();
+
+	const location = useLocation();
+	const navigate = useNavigate();
 
 	const handleChange = (e) => {
 		setForm({ ...form, [e.target.name]: e.target.value });
@@ -19,6 +29,9 @@ const Login = () => {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
+		signUp(form, location, navigate);
+		signInUsingEmail(form.email, form.password, location, navigate);
+		console.log(form.email);
 	};
 
 	const switchMode = () => {
@@ -53,6 +66,16 @@ const Login = () => {
 								required
 							/>
 						</div>
+						<div className={styles.formInput}>
+							<label htmlFor='username'>Email</label>
+							<input
+								name='email'
+								type='text'
+								placeholder='Enter your email'
+								onChange={handleChange}
+								required
+							/>
+						</div>
 						{isSignup && (
 							<div className={styles.formInput}>
 								<label htmlFor='phoneNumber'>
@@ -71,9 +94,9 @@ const Login = () => {
 							<div className={styles.formInput}>
 								<label htmlFor='avatarURL'>Avatar URL</label>
 								<input
-									name='avatarURL'
+									name='avatarUrl'
 									type='text'
-									placeholder='Avatar URL'
+									placeholder='Avatar Url'
 									onChange={handleChange}
 								/>
 							</div>
@@ -83,7 +106,7 @@ const Login = () => {
 							<input
 								name='password'
 								type='password'
-								placeholder='Password'
+								placeholder='Password (at least 6 character )'
 								onChange={handleChange}
 								required
 							/>
@@ -102,6 +125,7 @@ const Login = () => {
 								/>
 							</div>
 						)}
+						{authError && <p id={styles.error}>{authError}</p>}
 						<div className={styles.formButton}>
 							<button>{isSignup ? 'Sign Up' : 'Sign In'}</button>
 						</div>
@@ -115,6 +139,22 @@ const Login = () => {
 								{isSignup ? 'Sign In' : 'Sign Up'}
 							</span>
 						</p>
+					</div>
+					<div className={styles.formButton}>
+						<p>
+							Or, {isSignup ? 'Sign Up' : 'Sign In'} using google
+						</p>
+						<br />
+						<button
+							onClick={() =>
+								signInUsingGoogle(location, navigate)
+							}
+							className={styles.formButton}
+						>
+							{isSignup
+								? 'Sign Up with Google'
+								: 'Sign In withGoogle'}
+						</button>
 					</div>
 				</div>
 			</div>

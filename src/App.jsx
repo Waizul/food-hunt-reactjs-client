@@ -8,6 +8,7 @@ import Cart from './pages/Cart/Cart';
 import Home from './pages/Home/Home';
 import Item from './pages/Item/Item';
 import Login from './pages/Login/Login';
+import PrivateRoute from './pages/Login/PrivateRoute';
 import Order from './pages/Order/Order';
 function App() {
 	return (
@@ -21,8 +22,22 @@ function App() {
 					<Route path='/item/:id' element={<Item />} />
 					<Route path='/blogs' element={<Home />} />
 					<Route path='login' element={<Login />} />
-					<Route path='cart' element={<Cart />} />
-					<Route path='/order' element={<Order />} />
+					<Route
+						path='cart'
+						element={
+							<PrivateRoute>
+								<Cart />
+							</PrivateRoute>
+						}
+					/>
+					<Route
+						path='/order'
+						element={
+							<PrivateRoute>
+								<Order />
+							</PrivateRoute>
+						}
+					/>
 				</Routes>
 				{/* <Footer /> */}
 			</BrowserRouter>

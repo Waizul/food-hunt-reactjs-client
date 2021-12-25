@@ -4,10 +4,13 @@ import telImg from '../../image/sign/telephone.png';
 import cartImg from '../../image/sign/cart.png';
 import { Link, NavLink } from 'react-router-dom';
 import useCart from '../../hooks/useCart';
-
+import useAuth from '../../hooks/useAuth';
 const Navbar = () => {
 	const { cart } = useCart();
 	console.log(cart);
+	const { user, logOut } = useAuth();
+	console.log(user);
+
 	return (
 		<div className={styles.container}>
 			<div className={styles.item}>
@@ -38,10 +41,19 @@ const Navbar = () => {
 					<div className={styles.counter}>{cart.length}</div>
 				</div>
 			</div>
-			<Link to='/login'>
-				{' '}
-				<button className={styles.loginButton}>Login</button>
-			</Link>
+			{user.email ? (
+				<>
+					<span>{user.displayName}</span>
+					<button onClick={logOut} className={styles.loginButton}>
+						Logout
+					</button>
+				</>
+			) : (
+				<Link to='/login'>
+					{' '}
+					<button className={styles.loginButton}>Login</button>
+				</Link>
+			)}
 		</div>
 	);
 };

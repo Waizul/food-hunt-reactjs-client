@@ -73,9 +73,17 @@
 	box-shadow: 0px 0px 0px 1.5px #005fff;
 	border-color: #005fff;
 }
+#error {
+	color: red;
+	font-size: 1rem;
+}
 .formButton {
 	margin-top: 2rem;
 	display: flex;
+	flex-direction: column;
+}
+.formButton p {
+	font-size: 1rem;
 }
 .formButton button {
 	width: 8rem;
