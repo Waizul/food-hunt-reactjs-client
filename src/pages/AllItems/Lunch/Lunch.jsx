@@ -7,7 +7,7 @@ const Lunch = () => {
 	const items = useFoodItem(type);
 	return (
 		<>
-			<h2>Lunch</h2>
+			<h1>l</h1>
 			<div className={styles.container}>
 				{items.map((item) => (
 					<FoodCard item={item} key={item._id} />

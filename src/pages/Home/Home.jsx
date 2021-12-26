@@ -5,6 +5,7 @@ import FoodMenu from './FoodMenu/FoodMenu';
 import Services from './Services/Services';
 import Navbar from '../../components/Navbar/Navbar';
 import Footer from '../../components/Footer/Footer';
+import { Outlet } from 'react-router-dom';
 
 const Home = () => {
 	return (

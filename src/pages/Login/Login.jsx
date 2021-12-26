@@ -127,7 +127,9 @@ const Login = () => {
 						)}
 						{authError && <p id={styles.error}>{authError}</p>}
 						<div className={styles.formButton}>
-							<button>{isSignup ? 'Sign Up' : 'Sign In'}</button>
+							<button className={styles.loginButton}>
+								{isSignup ? 'Sign up' : 'Sign in'}
+							</button>
 						</div>
 					</form>
 					<div className={styles.formStatus}>
@@ -140,20 +142,19 @@ const Login = () => {
 							</span>
 						</p>
 					</div>
-					<div className={styles.formButton}>
+					<div className={styles.formStatus}>
 						<p>
-							Or, {isSignup ? 'Sign Up' : 'Sign In'} using google
+							Or, {isSignup ? 'Sign up' : 'Sign in'} using google.
 						</p>
-						<br />
 						<button
 							onClick={() =>
 								signInUsingGoogle(location, navigate)
 							}
-							className={styles.formButton}
+							className={styles.loginButton}
 						>
 							{isSignup
-								? 'Sign Up with Google'
-								: 'Sign In withGoogle'}
+								? 'Sign up with Google'
+								: 'Sign in with Google'}
 						</button>
 					</div>
 				</div>

@@ -36,10 +36,12 @@ const Navbar = () => {
 				</ul>
 			</div>
 			<div className={styles.item}>
-				<div className={styles.cart}>
-					<img src={cartImg} alt='' width='30px' height='30px' />
-					<div className={styles.counter}>{cart.length}</div>
-				</div>
+				<Link to='/cart'>
+					<div className={styles.cart}>
+						<img src={cartImg} alt='' width='30px' height='30px' />
+						<div className={styles.counter}>{cart.length}</div>
+					</div>
+				</Link>
 			</div>
 			{user.email ? (
 				<>

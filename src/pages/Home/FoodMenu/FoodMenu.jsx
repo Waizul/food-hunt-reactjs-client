@@ -1,5 +1,5 @@
 import React from 'react';
-import Breakfast from '../../AllItems/Breakfast/Breakfast';
+import { Link } from 'react-router-dom';
 import Lunch from '../../AllItems/Lunch/Lunch';
 
 import styles from './FoodMenu.module.css';
@@ -14,6 +14,18 @@ const FoodMenu = () => {
 				time. If like to eat in our restaurant, we have great
 				environment suited to your need.
 			</p>
+
+			<div className={styles.linkContainer}>
+				<Link to={'breakfast'} className={styles.link}>
+					Breakfast
+				</Link>
+				<Link to='lunch' className={styles.link}>
+					Lunch
+				</Link>
+				<Link to='dinner' className={styles.link}>
+					Dinner
+				</Link>
+			</div>
 			<div className={styles.wrapper}>
 				<Lunch />
 			</div>

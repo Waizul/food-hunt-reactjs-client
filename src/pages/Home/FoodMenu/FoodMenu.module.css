@@ -20,6 +20,16 @@
 .wrapper {
 	padding: 0 10px;
 }
+.linkContainer {
+	margin-top: 20px;
+}
+.link {
+	margin-right: 12px;
+	font-size: 1.2rem;
+	color: #d1411e;
+	font-weight: bold;
+	border-bottom: 3px solid red;
+}
 @media screen and (max-width: 800px) {
 	.container {
 		padding: 20px 20px;

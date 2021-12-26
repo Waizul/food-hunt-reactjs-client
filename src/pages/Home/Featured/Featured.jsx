@@ -3,14 +3,15 @@ import React, { useState } from 'react';
 import styles from './Featured.module.css';
 import arrowl from '../../../image/sign/arrowl.png';
 import arrowr from '../../../image/sign/arrowr.png';
-import brfImg from '../../../image/food/breakfast5.png';
-import lnImg from '../../../image/food/lunch2.png';
-import dnImg from '../../../image/food/dinner3.png';
 
 const Featured = () => {
 	const [index, setIndex] = useState(0);
 
-	const images = [brfImg, lnImg, dnImg];
+	const images = [
+		'https://i.ibb.co/KKQxc0v/dinner1.png',
+		'https://i.ibb.co/fYZsjws/dinner4.png',
+		'https://i.ibb.co/6mDtKfv/lunch6.png',
+	];
 
 	const handleArrow = (direction) => {
 		if (direction === 'l') {

@@ -8,7 +8,7 @@ const Breakfast = () => {
 
 	return (
 		<>
-			<h2>Breakfast</h2>
+			<h1>b</h1>
 			<div className={styles.container}>
 				{items.map((item) => (
 					<FoodCard item={item} key={item.id} />

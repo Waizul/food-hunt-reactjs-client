@@ -85,8 +85,9 @@
 .formButton p {
 	font-size: 1rem;
 }
-.formButton button {
-	width: 8rem;
+
+.loginButton {
+	/* width: 8rem; */
 	padding: 6px 25px;
 	font-size: 1.1rem;
 	font-weight: bold;
@@ -97,18 +98,15 @@
 	cursor: pointer;
 	transition: 0.3s ease;
 }
-.formButton button:hover {
+.loginButton:hover {
 	background-color: rgba(255, 0, 0, 0.808);
 	transform: translate(0.1rem);
 }
-.loginButton {
-}
-.loginButton:hover {
-}
 .formStatus {
 	display: flex;
+	flex-direction: column;
 	justify-content: flex-start;
-	align-items: center;
+	/* align-items: center; */
 	margin-top: 0.2rem;
 }
 .formStatus p {

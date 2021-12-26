@@ -12,15 +12,15 @@ const Item = () => {
 	const { cart, setCart } = useCart();
 	// console.log(cart);
 	useEffect(() => {
-		const url = `http://localhost:5000/items/${id}`;
+		const url = `https://still-ocean-05548.herokuapp.com/items/${id}`;
 		fetch(`${url}`)
 			.then((res) => res.json())
 			.then((data) => setItem(data));
 	}, [id]);
-	// console.log(item);
+	console.log(item);
 	let price = parseInt(item?.price);
 
-	const [newPrice, setNewPrice] = useState(item?.price);
+	let [newPrice, setNewPrice] = useState(price);
 
 	const handleQuantity = (sign) => {
 		if (sign === '-' && quantity > 1) {
@@ -35,12 +35,12 @@ const Item = () => {
 		}
 	};
 
-	const handleAddToCart = (item) => {
+	const handleAddToCart = (item, quantity) => {
 		const exists = cart.find((itm) => itm._id === item._id);
 		let newCart = [];
 		if (exists) {
 			const rest = cart.filter((itm) => itm._id !== item._id);
-			exists.quantity = exists.quantity + 1;
+			exists.quantity = quantity;
 			newCart = [...rest, item];
 		} else {
 			item.quantity = quantity;
@@ -104,7 +104,7 @@ const Item = () => {
 						<div className={styles.add}>
 							<span onClick={() => handleQuantity('-')}>-</span>
 							<input
-								type='text'
+								type='number'
 								defaultValue={1}
 								value={quantity}
 								className={styles.quantity}
@@ -113,7 +113,7 @@ const Item = () => {
 						</div>
 						<button
 							className={styles.button}
-							onClick={() => handleAddToCart(item)}
+							onClick={() => handleAddToCart(item, quantity)}
 						>
 							Add to Cart
 						</button>

@@ -112,7 +112,8 @@ const useFirebase = () => {
 	//save user to mongodb
 	const saveUser = (form, method) => {
 		const user = form;
-		fetch('http://localhost:5000/auth', {
+		console.log(user);
+		fetch('https://still-ocean-05548.herokuapp.com/user', {
 			method: method,
 			headers: {
 				'content-type': 'application/json',
