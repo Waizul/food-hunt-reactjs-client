@@ -9,7 +9,7 @@ const Dinner = () => {
 		<><h1>d</h1>
 			<div className={styles.container}>
 				{items.map((item) => (
-					<FoodCard item={item} key={item.id} />
+					<FoodCard item={item} key={item._id} />
 				))}
 			</div>
 		</>

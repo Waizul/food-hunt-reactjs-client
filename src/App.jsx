@@ -22,9 +22,9 @@ function App() {
 					<Route exact path='/' element={<Home />} />
 					<Route path='/home/' element={<Home />} />
 
-					<Route path=':breakfast' element={<Breakfast />} />
-					<Route path=':lunch' element={<Lunch />} />
-					<Route path=':dinner' element={<Dinner />} />
+					<Route path='/breakfast' element={<Breakfast />} />
+					<Route path='/lunch' element={<Lunch />} />
+					<Route path='/dinner' element={<Dinner />} />
 					<Route path='/items' element={<AllItems />} />
 					<Route path='/item/:id' element={<Item />} />
 					<Route path='/blogs' element={<Home />} />

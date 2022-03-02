@@ -4,7 +4,7 @@ const useFoodItem = (type) => {
 	const [foodItems, setFoodItems] = useState([]);
 
 	useEffect(() => {
-		const url = `https://still-ocean-05548.herokuapp.com/items?type=${type}`;
+		const url = `http://localhost:5000/items?type=${type}`;
 
 		fetch(`${url}`)
 			.then((res) => res.json())

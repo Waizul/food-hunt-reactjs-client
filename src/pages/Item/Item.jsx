@@ -12,7 +12,7 @@ const Item = () => {
 	const { cart, setCart } = useCart();
 	// console.log(cart);
 	useEffect(() => {
-		const url = `https://still-ocean-05548.herokuapp.com/items/${id}`;
+		const url = `http://localhost:5000/items/${id}`;
 		fetch(`${url}`)
 			.then((res) => res.json())
 			.then((data) => setItem(data));

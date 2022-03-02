@@ -1,63 +1,100 @@
-import React from 'react';
-import styles from './Navbar.module.css';
-import telImg from '../../image/sign/telephone.png';
-import cartImg from '../../image/sign/cart.png';
-import { Link, NavLink } from 'react-router-dom';
-import useCart from '../../hooks/useCart';
-import useAuth from '../../hooks/useAuth';
+import React, { useState } from "react";
+import styles from "./Navbar.module.css";
+import callIcon from "../../image/sign/telephone.png";
+import cartImg from "../../image/sign/cart.png";
+import { Link, NavLink } from "react-router-dom";
+import useCart from "../../hooks/useCart";
+import useAuth from "../../hooks/useAuth";
+import {
+  Button,
+  CallDiv,
+  CallIcon,
+  CallTexts,
+  Cart,
+  CartQuantity,
+  Center,
+  Container,
+  HamburgerMenu,
+  Icon,
+  IconWrapper,
+  Left,
+  Logo,
+  Menu,
+  MenuItem,
+  Right,
+  UserName,
+} from "./navbarStyle";
+import Sidebar from "./Sidebar";
+import { StyledLink } from "../../globalStyles/globalStyles";
 const Navbar = () => {
-	const { cart } = useCart();
-	console.log(cart);
-	const { user, logOut } = useAuth();
-	console.log(user);
+  const [isMobile, setIsMobile] = useState(false);
+  const { cart } = useCart();
+  console.log(cart);
+  const { user, logOut } = useAuth();
+  console.log(user);
+  const handleMobile = () => {
+    setIsMobile(!isMobile);
+  };
+  console.log(isMobile);
 
-	return (
-		<div className={styles.container}>
-			<div className={styles.item}>
-				<div className={styles.callButton}>
-					<img src={telImg} alt='telephone' width='28' height='28' />
-				</div>
-				<div className={styles.texts}>
-					<div className={styles.text}>ORDER NOW</div>
-					<div className={styles.text}>01000000000</div>
-				</div>
-			</div>
-			<div className={styles.item}>
-				<ul className={styles.list}>
-					<NavLink to='/home' className={styles.navlink}>
-						<li className={styles.listItem}>Home</li>
-					</NavLink>
-					<NavLink to='/items' className={styles.navlink}>
-						<li className={styles.listItem}>All Items</li>
-					</NavLink>
-					<NavLink to='blog' className={styles.navlink}>
-						<li className={styles.listItem}>Blog</li>
-					</NavLink>
-				</ul>
-			</div>
-			<div className={styles.item}>
-				<Link to='/cart'>
-					<div className={styles.cart}>
-						<img src={cartImg} alt='' width='30px' height='30px' />
-						<div className={styles.counter}>{cart.length}</div>
-					</div>
-				</Link>
-			</div>
-			{user.email ? (
-				<>
-					<span>{user.displayName}</span>
-					<button onClick={logOut} className={styles.loginButton}>
-						Logout
-					</button>
-				</>
-			) : (
-				<Link to='/login'>
-					{' '}
-					<button className={styles.loginButton}>Login</button>
-				</Link>
-			)}
-		</div>
-	);
+  return (
+    <>
+      <Container>
+        <Left>
+            <CallDiv>
+          <a href="tel:0100000000">
+              <IconWrapper>
+                <Icon src={callIcon} alt="call icon" />
+              </IconWrapper>
+              <CallTexts>
+                <p>ORDER NOW !</p>
+                <p className="dialNum">0100 000 000</p>
+              </CallTexts>
+          </a>
+            </CallDiv>
+        </Left>
+        <Center>
+          <StyledLink to="/">
+            <Logo>FoodHunt</Logo>
+          </StyledLink>
+        </Center>
+        <Right>
+          <Menu isMobile={isMobile}>
+            <MenuItem>
+              <StyledLink to="/items">All Items</StyledLink>
+            </MenuItem>
+            <MenuItem>
+              <StyledLink to="/blog">Blog</StyledLink>
+            </MenuItem>
+            <MenuItem>
+              <StyledLink to="/Offer">Offer</StyledLink>
+            </MenuItem>
+          </Menu>
+          <StyledLink to="/cart">
+            <Cart>
+              <Icon src={cartImg} alt="cart" />
+              <CartQuantity>0</CartQuantity>
+            </Cart>
+          </StyledLink>
+          <HamburgerMenu isMobile={isMobile} onClick={handleMobile}>
+            <div className="line1" />
+            <div className="line2" />
+            <div className="line3" />
+          </HamburgerMenu>
+          {user.email ? (
+            <>
+              <UserName>{user.displayName}</UserName>
+              <Button onClick={logOut}>Logout</Button>
+            </>
+          ) : (
+            <Link to="/login">
+              <Button>Login</Button>
+            </Link>
+          )}
+        </Right>
+      </Container>
+    </>
+  );
 };
 
 export default Navbar;
