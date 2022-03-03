@@ -1,14 +1,14 @@
 import React, { useState } from "react";
-import styles from "./Navbar.module.css";
+import {useSelector} from 'react-redux'
+
 import callIcon from "../../image/sign/telephone.png";
 import cartImg from "../../image/sign/cart.png";
-import { Link, NavLink } from "react-router-dom";
 import useCart from "../../hooks/useCart";
 import useAuth from "../../hooks/useAuth";
+import { StyledLink } from "../../globalStyles/globalStyles";
 import {
   Button,
   CallDiv,
-  CallIcon,
   CallTexts,
   Cart,
   CartQuantity,
@@ -24,18 +24,18 @@ import {
   Right,
   UserName,
 } from "./navbarStyle";
-import Sidebar from "./Sidebar";
-import { StyledLink } from "../../globalStyles/globalStyles";
+
 const Navbar = () => {
   const [isMobile, setIsMobile] = useState(false);
+  const quantity = useSelector(state => state.cart.quantity)
   const { cart } = useCart();
-  console.log(cart);
+  
   const { user, logOut } = useAuth();
-  console.log(user);
+  
   const handleMobile = () => {
     setIsMobile(!isMobile);
   };
-  console.log(isMobile);
+ 
 
   return (
     <>
@@ -73,7 +73,7 @@ const Navbar = () => {
           <StyledLink to="/cart">
             <Cart>
               <Icon src={cartImg} alt="cart" />
-              <CartQuantity>0</CartQuantity>
+              <CartQuantity>{quantity}</CartQuantity>
             </Cart>
           </StyledLink>
           <HamburgerMenu isMobile={isMobile} onClick={handleMobile}>
@@ -87,9 +87,9 @@ const Navbar = () => {
               <Button onClick={logOut}>Logout</Button>
             </>
           ) : (
-            <Link to="/login">
+            <StyledLink to="/login">
               <Button>Login</Button>
-            </Link>
+            </StyledLink>
           )}
         </Right>
       </Container>

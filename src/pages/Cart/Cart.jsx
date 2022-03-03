@@ -4,10 +4,12 @@ import styles from './Cart.module.css';
 import useCart from '../../hooks/useCart';
 import CartItem from '../../components/CartItem/CartItem';
 import CartTotal from '../../components/CardTotal/CartTotal';
+import { useSelector } from 'react-redux';
 
 const Cart = () => {
-	const { cart } = useCart();
-	console.log(cart);
+	const cart = useSelector(state=>state.cart)
+	// const { cart } = useCart();
+	// console.log(cart);
 	return (
 		<div className={styles.container}>
 			<div className={styles.left}>

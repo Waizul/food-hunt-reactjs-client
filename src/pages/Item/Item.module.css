@@ -82,7 +82,9 @@
 	font-size: 14px;
 	font-weight: 500;
 }
-
+label{
+	width: max-content;
+}
 .checkbox {
 	width: 20px;
 	height: 20px;

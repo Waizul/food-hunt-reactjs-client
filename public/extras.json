@@ -1,0 +1,17 @@
+[
+	{
+		"id": 1,
+		"title": "Extra Cheese",
+        "price": 3
+	},
+	{
+		"id": 2,
+		"title": "Spicy Sauce",
+        "price": 2
+	},
+	{
+		"id": 3,
+		"title": "Garlic Sauce",
+        "price": 3
+	}
+]
