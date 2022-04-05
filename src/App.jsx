@@ -16,6 +16,7 @@ import Order from "./pages/Order/Order";
 import { useState } from "react";
 import NavMenu from "./components/NavMenu";
 import Home from "./pages/Home";
+import Items from "./components/Items";
 
 const NavContainer = styled.div`
   position: relative;
@@ -32,13 +33,13 @@ function App() {
           <NavMenu active={active} setActive={setActive} />
         </NavContainer>
         <Routes>
-          <Route path='/*' element={<Home/>} />
+          <Route path='/' element={<Home/>} />
           
-          <Route path="/" element={<Home />}>
-            <Route path="/" element={<Lunch />} />
+          {/* <Route path="/" element={<Home />}> */}
             <Route path="breakfast" element={<Breakfast />} />
+            <Route path="/lunch" element={<Lunch />} />
             <Route path="dinner" element={<Dinner />} />
-          </Route>
+          {/* </Route> */}
 
           <Route path="/items" element={<AllItems />} />
           <Route path="/item/:id" element={<Item />} />

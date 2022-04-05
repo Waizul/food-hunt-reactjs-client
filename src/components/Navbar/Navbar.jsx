@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import styled from 'styled-components';
+
 import {useSelector} from 'react-redux'
 
 import callIcon from "../../image/sign/telephone.png";
 import cartImg from "../../image/sign/cart.png";
 import useAuth from "../../hooks/useAuth";
-import { StyledLink } from "../../globalStyles";
+import { Link, StyledLink } from "../../globalStyles";
 import {
   Button,
   CallDiv,
@@ -24,6 +25,11 @@ import {
   UserName,
 } from "./navbarStyle";
 
+const StyledNavLink = styled(StyledLink)`
+&.active{
+ border-bottom: 2px solid white;
+}
+`
 const Navbar = ({active,setActive}) => {
   
   const quantity = useSelector(state => state.cart.quantity)
@@ -50,28 +56,28 @@ const Navbar = ({active,setActive}) => {
             </CallDiv>
         </Left>
         <Center>
-          <StyledLink to="/">
+          <Link to="/">
             <Logo>FoodHunt</Logo>
-          </StyledLink>
+          </Link>
         </Center>
         <Right>
           <Menu>
             <MenuItem>
-              <StyledLink to="/items">All Items</StyledLink>
+              <StyledNavLink to="/items">All Items</StyledNavLink>
             </MenuItem>
             <MenuItem>
-              <StyledLink to="/blog">Blog</StyledLink>
+              <StyledNavLink to="/blog">Blog</StyledNavLink>
             </MenuItem>
             <MenuItem>
-              <StyledLink to="/Offer">Offer</StyledLink>
+              <StyledNavLink to="/Offer">Offer</StyledNavLink>
             </MenuItem>
           </Menu>
-          <StyledLink to="/cart">
+          <StyledNavLink to="/cart">
             <Cart>
               <Icon src={cartImg} alt="cart" />
               <CartQuantity>{quantity}</CartQuantity>
             </Cart>
-          </StyledLink>
+          </StyledNavLink>
           <HamburgerMenu active={active} onClick={()=>setActive(!active)}>
             <div className="line1" />
             <div className="line2" />

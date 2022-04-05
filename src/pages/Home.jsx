@@ -9,31 +9,21 @@ import Search from "../components/Search";
 import FoodMenu from "../components/FoodMenu";
 import styled from "styled-components";
 import { StyledLink } from "../globalStyles";
+import Upcoming from "../components/Upcoming";
 
 const Container = styled.div`
-text-align: center;
+  text-align: center;
 `;
 
-const Button = styled.button`
-  padding: 10px 30px;
-  margin: 20px auto;
-  font-size: 1.2rem;
-  cursor: pointer;
-  font-weight: bold;
-  color: white;
-  background-color: #11115a;
-`
 const Home = () => {
+  const [type, setType] = useState("lunch");
   return (
     <Container>
       <Search />
-      <FoodMenu />
-      <Outlet />
-      <StyledLink to='/items'>
-
-      <Button>Checkout</Button>
-      </StyledLink>
-      <Featured />
+      <FoodMenu type={type} setType={setType} />
+      {/* <Outlet /> */}
+      <StyledLink to="/items"></StyledLink>
+      <Upcoming/>
       <Services />
     </Container>
   );
