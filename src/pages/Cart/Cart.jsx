@@ -9,16 +9,16 @@ import { useSelector } from 'react-redux';
 const Cart = () => {
 	const cart = useSelector(state=>state.cart)
 	// const { cart } = useCart();
-	// console.log(cart);
+	console.log(cart);
 	return (
 		<div className={styles.container}>
 			<div className={styles.left}>
-				{cart.map((item) => (
+				{cart?.items.map((item) => (
 					<CartItem item={item} key={item._id} />
 				))}
 			</div>
 			<div className={styles.right}>
-				<CartTotal cart={cart}>
+				<CartTotal total={cart.total}>
 					<Link to={'/order'}>
 						<button className={styles.button}>Pay</button>
 					</Link>

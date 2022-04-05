@@ -4,7 +4,7 @@ const UseAllItems = () => {
 	const [allItems, setAllItems] = useState([]);
 
 	useEffect(() => {
-		fetch('http://localhost:5000/items')
+		fetch('https://foodhuntbd.herokuapp.com/items')
 			.then((res) => res.json())
 			.then((data) => setAllItems(data));
 	}, []);

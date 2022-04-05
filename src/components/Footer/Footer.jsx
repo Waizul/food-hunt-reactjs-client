@@ -9,8 +9,8 @@ const Footer = () => {
 					{/* <img src={footerImg} alt='' /> */}
 					<iframe
 						title='locations'
-						width='650'
-						height='435'
+						width='100%'
+						height='100%'
 						id='gmap_canvas'
 						src='https://maps.google.com/maps?q=dhaka&t=&z=13&ie=UTF8&iwloc=&output=embed'
 						frameBorder='0'

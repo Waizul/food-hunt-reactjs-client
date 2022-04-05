@@ -1,7 +1,7 @@
 .container {
 	height: calc(100vh - 100px);
 	/* background-color: #d1411e; */
-	background-image: url('../../../image/featuredbg.png');
+	background-image: url('../../../image/searchbg.png');
 	overflow: hidden;
 	position: relative;
 }

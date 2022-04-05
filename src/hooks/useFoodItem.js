@@ -4,7 +4,7 @@ const useFoodItem = (type) => {
 	const [foodItems, setFoodItems] = useState([]);
 
 	useEffect(() => {
-		const url = `http://localhost:5000/items?type=${type}`;
+		const url = `https://foodhuntbd.herokuapp.com/items?type=${type}`;
 
 		fetch(`${url}`)
 			.then((res) => res.json())
@@ -15,3 +15,4 @@ const useFoodItem = (type) => {
 };
 
 export default useFoodItem;
+ 

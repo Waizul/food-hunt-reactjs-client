@@ -3,9 +3,8 @@ import {useSelector} from 'react-redux'
 
 import callIcon from "../../image/sign/telephone.png";
 import cartImg from "../../image/sign/cart.png";
-import useCart from "../../hooks/useCart";
 import useAuth from "../../hooks/useAuth";
-import { StyledLink } from "../../globalStyles/globalStyles";
+import { StyledLink } from "../../globalStyles";
 import {
   Button,
   CallDiv,
@@ -25,16 +24,13 @@ import {
   UserName,
 } from "./navbarStyle";
 
-const Navbar = () => {
-  const [isMobile, setIsMobile] = useState(false);
+const Navbar = ({active,setActive}) => {
+  
   const quantity = useSelector(state => state.cart.quantity)
-  const { cart } = useCart();
+  // const { cart } = useCart();
   
   const { user, logOut } = useAuth();
   
-  const handleMobile = () => {
-    setIsMobile(!isMobile);
-  };
  
 
   return (
@@ -59,7 +55,7 @@ const Navbar = () => {
           </StyledLink>
         </Center>
         <Right>
-          <Menu isMobile={isMobile}>
+          <Menu>
             <MenuItem>
               <StyledLink to="/items">All Items</StyledLink>
             </MenuItem>
@@ -76,7 +72,7 @@ const Navbar = () => {
               <CartQuantity>{quantity}</CartQuantity>
             </Cart>
           </StyledLink>
-          <HamburgerMenu isMobile={isMobile} onClick={handleMobile}>
+          <HamburgerMenu active={active} onClick={()=>setActive(!active)}>
             <div className="line1" />
             <div className="line2" />
             <div className="line3" />

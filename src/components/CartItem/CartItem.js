@@ -2,23 +2,7 @@ import { useState } from 'react';
 import styles from './CartItem.module.css';
 
 const CartItem = ({ item }) => {
-	// const [quantity, setQuantity] = useState(1);
-	// const [reNewPrice, setReNewPrice] = useState(0);
-	console.log(item);
-	let newPrice = item?.price;
-
-	// const handleQuantity = (sign) => {
-	// 	if (sign === '-' && quantity > 1) {
-	// 		setQuantity(quantity - 1);
-	// 		newPrice = newPrice * quantity - newPrice;
-	// 		setReNewPrice(newPrice);
-	// 	}
-	// 	if (sign === '+') {
-	// 		setQuantity(quantity + 1);
-	// 		newPrice = newPrice + newPrice * quantity;
-	// 		setReNewPrice(newPrice);
-	// 	}
-	// };
+	
 	return (
 		<div className={styles.container}>
 			<div className={styles.wrapper}>
@@ -27,7 +11,18 @@ const CartItem = ({ item }) => {
 					<h5 className={styles.title}>{item.title}</h5>
 					<p className={styles.price}>${item.price}</p>
 					<p>Qtn: {item.quantity}</p>
+					<p>Total: {(item.price*item.quantity).toFixed(2)}</p>
 				</div>
+				
+					{item.extras.map(extra=>
+						<div>
+						<p>{extra.title}</p>
+					<p className={styles.price}>${extra.price}</p>
+					
+					</div>
+						)}
+					
+			
 			</div>
 		</div>
 	);

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { laptop, tablet } from "../../globalStyles/responsive";
+import { laptop, tablet } from "../../responsive";
 
 export const Container = styled.nav`
   height: 70px;
@@ -68,16 +68,17 @@ export const HamburgerMenu = styled.div`
     width: 28px;
     height: 3px;
     background-color: white;
+    transition: all 1s ease;
     &.line1 {
       transform: ${(props) =>
-        props.isMobile ? "rotate(45deg) translate(4px, 7px)" : "0"};
+        props.active ? "rotate(45deg) translate(4px, 7px)" : "0"};
     }
     &.line2 {
-      opacity: ${(props) => (props.isMobile ? "0" : "1")};
+      opacity: ${(props) => (props.active ? "0" : "1")};
     }
     &.line3 {
       transform: ${(props) =>
-        props.isMobile ? "rotate(-45deg) translate(4px, -7px)" : "0"};
+        props.active ? "rotate(-45deg) translate(4px, -7px)" : "0"};
     }
   }
   ${tablet({ display: "none" })}
@@ -111,17 +112,17 @@ export const CartQuantity = styled.div`
 `;
 export const Menu = styled.ul`
   position: absolute;
-  display: ${(props) => (props.isMobile ? "flex" : "none")};
-  flex-direction: ${(props) => (props.isMobile ? "column" : "row")};
+  display: ${(props) => (props.active ? "flex" : "none")};
+  flex-direction: ${(props) => (props.active ? "column" : "row")};
   align-items: center;
   justify-content: space-evenly;
   gap: 50px;
-  width: ${(props) => (props.isMobile ? "100%" : "-100vw")};
+  width: ${(props) => (props.active ? "100%" : "-100vw")};
   height: calc(100vh - 80px);
   top: 50px;
   right: 0;
   background-color: #d1411e;
-  transition: ${(props) => props.isMobile && "all 1s ease-in-out"};
+  transition: ${(props) => props.active && "all 1s ease-in-out"};
   ${tablet({ position: "static", display: "flex", height: "100%" })}
   ${laptop({ position: "static", display: "flex", height: "100%" })}
 `;

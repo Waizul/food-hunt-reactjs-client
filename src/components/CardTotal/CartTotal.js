@@ -1,18 +1,10 @@
 import styles from './CartTotal.module.css';
 
-const CartTotal = ({ cart, children }) => {
-	console.log(cart);
-	let total = 0;
-	let totalQuantity = 0;
-
-	for (const item of cart) {
-		if (!item.quantity) {
-			item.quantity = 1;
-		}
-		total = total + item.price * item.quantity;
-		totalQuantity = totalQuantity + item.quantity;
-		console.log(item.price);
-	}
+const CartTotal = ({ total, children }) => {
+	const tax = total * 0.15
+	const deliveryFee = 1
+	const discount = total * 0.1
+const grandTotal = (total + tax + deliveryFee - discount)
 	return (
 		<div>
 			<div className={styles.wrapper}>
@@ -22,17 +14,17 @@ const CartTotal = ({ cart, children }) => {
 					{total.toFixed(2)}
 				</div>
 				<div className={styles.totalText}>
-					<b className={styles.totalTextTitle}>Tax:</b>$0.00
+					<b className={styles.totalTextTitle}>Tax:</b>${tax.toFixed(2)}
 				</div>
 				<div className={styles.totalText}>
-					<b className={styles.totalTextTitle}>Delivery Fee:</b>$0.00
+					<b className={styles.totalTextTitle}>Delivery Fee:</b>${deliveryFee.toFixed(2)}
 				</div>
 				<div className={styles.totalText}>
-					<b className={styles.totalTextTitle}>Discount:</b>$0.00
+					<b className={styles.totalTextTitle}>Discount:</b>${discount.toFixed(2)}
 				</div>
 				<div className={styles.totalText}>
 					<b className={styles.totalTextTitle}>Total:</b>$
-					{total.toFixed(2)}
+					{grandTotal.toFixed(2)}
 				</div>
 				{children}
 			</div>

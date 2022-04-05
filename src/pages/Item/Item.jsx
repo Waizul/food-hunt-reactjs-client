@@ -2,8 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import Navbar from "../../components/Navbar/Navbar";
-import useCart from "../../hooks/useCart";
-import { addToLocalStorage } from "../../localStorage/localStorage";
 import styles from "./Item.module.css";
 import { addItem } from "../../redux/cartSlice";
 
@@ -13,7 +11,6 @@ const Item = () => {
   const [extraOptions, setExtraOptions] = useState([]);
   const [extras, setExtras] = useState([]);
   const { id } = useParams();
-  const { cart, setCart } = useCart();
   const dispatch = useDispatch();
 
   const [price, setPrice] = useState(
@@ -50,11 +47,7 @@ const Item = () => {
       setExtras(extras.filter((ext) => ext._id !== extra._id));
     }
   };
-  console.log(price);
-  const handleAddToCart = () => {
-    dispatch(addItem({ ...item, extras, price, quantity }));
-  };
-
+ 
   const handleQuantity = (sign) => {
     if (sign === "-" && quantity > 1) {
       setQuantity(quantity - 1);
@@ -64,7 +57,11 @@ const Item = () => {
     }
   };
 
-  
+  const handleAddToCart = () => {
+    dispatch(addItem({ ...item, extras, price, quantity }));
+  };
+
+ 
   return (
     <>
       <Navbar />
@@ -82,7 +79,7 @@ const Item = () => {
           <div className={styles.ingredients}>
             {extraOptions.map((extra) => (
               <>
-                <div className={styles.option}>
+                <div className={styles.option} key={extra.id}>
                   <input
                     className={styles.checkbox}
                     type="checkbox"

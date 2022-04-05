@@ -1,15 +1,16 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  height: calc(100vh - 100px);
-  background-image: url('../../image/featuredbg.png');
+  height: 50vh;
+  width: 50vw;
+  background-image: url('../../image/searchbg.png');
   overflow: hidden;
   position: relative;
 `;
 
 export const ArrowContainer = styled.div`
   position: absolute;
-  width: 5%;
+  width: 10%;
   height: 10%;
   top: 0;
   left: ${props=>props.direction==='left' && '0'};
@@ -22,22 +23,22 @@ export const ArrowContainer = styled.div`
        width: 100%;
        height: 100%;
        background-color: #d1411e;
-       opacity: 0.1;
+       opacity: 0.3;
    }
 `;
 export const Wrapper = styled.div`
-width: 300vw;
+width: 50vw;
 height: 100%;
 display: flex;
-transform: translateX(${-100 * index}vw);
-transition:all 1.5s ease-in-out infinite alternate;
+transform:${props=>props.index && `translateX(${-50 * props.index}vw)`};
+transition:all 1.5s ease-in-out;
 `
 export const ImgContainer= styled.div`
-width: 100vw;
+width: 50vw;
 height: 100%;
 `
 export const Image = styled.img`
-width: 100vw;
+width: 50vw;
 height: 100%;
-object-fit: cover;
+object-fit: contain;
 `

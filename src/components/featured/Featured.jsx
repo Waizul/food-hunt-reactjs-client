@@ -25,7 +25,7 @@ const Featured = () => {
         <ArrowContainer direction='left' onClick={()=>handleSlide('left')}>
             <img src={arrowLeft} alt='arrow left' />
         </ArrowContainer>
-        <Wrapper>
+        <Wrapper index={index}>
             {feturedImages.map((img,i)=>
             <ImgContainer key={i}>
                 <Image src={img} alt='food item' />

@@ -5,15 +5,13 @@ name:'cart',
 initialState:{
     items:[],
     quantity:0,
-    extras:[],
     total:0
 },
 reducers:{
     addItem: (state, action) => {
         state.items.push(action.payload);
         state.quantity += 1;
-        state.extras = action.payload.extras;
-        state.total = action.payload.price * action.payload.quantity;
+        state.total += action.payload.price * action.payload.quantity;
     },
     reset:(state) => {
         state = state.initialState
