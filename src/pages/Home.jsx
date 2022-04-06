@@ -16,11 +16,11 @@ const Container = styled.div`
 `;
 
 const Home = () => {
-  const [type, setType] = useState("lunch");
+ 
   return (
     <Container>
       <Search />
-      <FoodMenu type={type} setType={setType} />
+      <FoodMenu />
       {/* <Outlet /> */}
       <StyledLink to="/items"></StyledLink>
       <Upcoming/>

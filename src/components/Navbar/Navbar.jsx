@@ -63,7 +63,7 @@ const Navbar = ({active,setActive}) => {
         <Right>
           <Menu>
             <MenuItem>
-              <StyledNavLink to="/items">All Items</StyledNavLink>
+              <StyledNavLink to="/menus">Menus</StyledNavLink>
             </MenuItem>
             <MenuItem>
               <StyledNavLink to="/blog">Blog</StyledNavLink>

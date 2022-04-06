@@ -1,6 +1,7 @@
+import { useState } from "react";
 import styled from "styled-components";
 
-import { Link, StyledLink } from "../globalStyles";
+import { Link } from "../globalStyles";
 import {tablet, laptop} from '../responsive'
 import Items from "./Items";
 
@@ -16,10 +17,13 @@ const ItemSelection = styled.div`
   font-size: 1.2rem;
   font-weight: 500;
   margin-bottom: 2rem;
+  
   & > span {
+    border-bottom: 3px solid white;
     cursor: pointer;
 
     &.active {
+      color: red;
       border-bottom: 3px solid red;
     }
   }
@@ -54,7 +58,9 @@ const Button = styled.button`
   background-color: #11115a;
 `;
 
-const FoodMenu = ({ type, setType }) => {
+const FoodMenu = () => {
+  const [type, setType] = useState("lunch");
+
   return (
     <Container>
       {/* <Title>THE BEST FOOD IN THE CAPITAL</Title>
@@ -83,7 +89,7 @@ const FoodMenu = ({ type, setType }) => {
       </ItemSelection>
       <Items type={type} />
 
-      <Link to={`${type}`}>
+      <Link to={`/menus/${type}`}>
         <Button>Checkout</Button>
       </Link>
     </Container>

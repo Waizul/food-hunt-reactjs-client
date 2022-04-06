@@ -5,9 +5,7 @@ import Navbar from "./components/Navbar/Navbar";
 import AuthProvider from "./context/AuthProvider";
 
 import AllItems from "./pages/AllItems/AllItems";
-import Breakfast from "./pages/AllItems/Breakfast/Breakfast";
-import Dinner from "./pages/AllItems/Dinner/Dinner";
-import Lunch from "./pages/AllItems/Lunch/Lunch";
+
 import Cart from "./pages/Cart/Cart";
 import Item from "./pages/Item/Item";
 import Login from "./pages/Login/Login";
@@ -17,6 +15,11 @@ import { useState } from "react";
 import NavMenu from "./components/NavMenu";
 import Home from "./pages/Home";
 import Items from "./components/Items";
+import Menus from "./pages/Menus";
+import Breakfast from "./components/Breakfast";
+import Dinner from './components/Dinner';
+import Lunch from './components/Lunch';
+
 
 const NavContainer = styled.div`
   position: relative;
@@ -33,15 +36,17 @@ function App() {
           <NavMenu active={active} setActive={setActive} />
         </NavContainer>
         <Routes>
-          <Route path='/' element={<Home/>} />
-          
+          <Route path="/" element={<Home />} />
+
           {/* <Route path="/" element={<Home />}> */}
-            <Route path="breakfast" element={<Breakfast />} />
-            <Route path="/lunch" element={<Lunch />} />
-            <Route path="dinner" element={<Dinner />} />
+
           {/* </Route> */}
 
-          <Route path="/items" element={<AllItems />} />
+          <Route path="/menus" element={<Menus />}>
+            <Route path="breakfast" element={<Breakfast />} />
+            <Route path="lunch" element={<Lunch />} />
+            <Route path="dinner" element={<Dinner />} />
+          </Route>
           <Route path="/item/:id" element={<Item />} />
           <Route path="/blogs" element={<Home />} />
           <Route path="/login" element={<Login />} />
