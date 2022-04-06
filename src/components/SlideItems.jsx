@@ -24,7 +24,7 @@ left: 0%;
   align-items: center;
   justify-content: center;
 
-  ${tablet({width:'420px',bottom:'25%',left:'8%'})}
+  ${tablet({width:'420px',bottom:'0%',left:'8%'})}
 `;
 const Title = styled.h1`
   color: #d1411e;

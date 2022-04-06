@@ -107,10 +107,10 @@ const Menu = ({ items }) => {
   const [extras, setExtras] = useState([]);
   const { id } = useParams();
   const dispatch = useDispatch();
-
+console.log(id)
   const [price, setPrice] = useState(
     useEffect(() => {
-      const url = `http://localhost:5000/items/${id}`;
+      const url = `https://foodhuntbd.herokuapp.com/items/${id}`;
       fetch(`${url}`)
         .then((res) => res.json())
         .then((data) => {
@@ -137,8 +137,8 @@ const Menu = ({ items }) => {
     <Container>
       <Wrapper>
         <Left>
-        {items.slice(0, 1).map((item) => (
-          <>
+       
+      
               <InfoContainer>
                 <Title>{item.title}</Title>
                 <p>{item.desc}</p>
@@ -162,15 +162,14 @@ const Menu = ({ items }) => {
               <Button onClick={handleAddToCart}>
                   Add
                 </Button>
-              </>
-              ))}
+            
             </Left>
             <Right>
-            {items.slice(0, 1).map((item) => (
-              // <ImgContainer>
+           
+              {/* // <ImgContainer> */}
               <Image src={item.imgUrl} alt={item.title} />
-              // </ImgContainer>
-              ))}
+              {/* // </ImgContainer> */}
+          
             </Right>
       </Wrapper>
               <SlideItems items={items} />

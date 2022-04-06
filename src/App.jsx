@@ -6,7 +6,6 @@ import AuthProvider from "./context/AuthProvider";
 
 import AllItems from "./pages/AllItems/AllItems";
 
-import Cart from "./pages/Cart/Cart";
 import Item from "./pages/Item/Item";
 import Login from "./pages/Login/Login";
 import PrivateRoute from "./pages/Login/PrivateRoute";
@@ -19,6 +18,7 @@ import Menus from "./pages/Menus";
 import Breakfast from "./components/Breakfast";
 import Dinner from './components/Dinner';
 import Lunch from './components/Lunch';
+import Cart from "./pages/Cart";
 
 
 const NavContainer = styled.div`
@@ -43,9 +43,9 @@ function App() {
           {/* </Route> */}
 
           <Route path="/menus" element={<Menus />}>
-            <Route path="breakfast" element={<Breakfast />} />
-            <Route path="lunch" element={<Lunch />} />
-            <Route path="dinner" element={<Dinner />} />
+            <Route path="breakfast/:id" element={<Breakfast />} />
+            <Route path="lunch/:id" element={<Lunch />} />
+            <Route path="dinner/:id" element={<Dinner />} />
           </Route>
           <Route path="/item/:id" element={<Item />} />
           <Route path="/blogs" element={<Home />} />

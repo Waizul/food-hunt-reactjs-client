@@ -1,9 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 
 import { Link } from "../globalStyles";
 import {tablet, laptop} from '../responsive'
 import Items from "./Items";
+import useMenu from './../hooks/useMenu';
+import Item from "./Item";
 
 const Container = styled.section`
   text-align: center;
@@ -48,6 +50,14 @@ const Desc = styled.p`
 
 `;
 
+const ItemsContainer = styled.div`
+ display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  ${tablet({ gridTemplateColumns: "repeat(2,1fr)", gap: "2rem" })}
+  ${laptop({ gridTemplateColumns: "repeat(3,1fr)", gap: "3rem" })};
+`
+
 const Button = styled.button`
   padding: 10px 30px;
   margin: 20px auto;
@@ -60,6 +70,9 @@ const Button = styled.button`
 
 const FoodMenu = () => {
   const [type, setType] = useState("lunch");
+  
+
+  const items = useMenu(type)
 
   return (
     <Container>
@@ -87,11 +100,24 @@ const FoodMenu = () => {
           Dinner
         </span>
       </ItemSelection>
-      <Items type={type} />
+<ItemsContainer>
 
-      <Link to={`/menus/${type}`}>
+{
+  items.map(item=><Item key={item._id} item={item}/>)
+}
+</ItemsContainer>
+      {
+        items.slice(0,1).map(item=>(
+          <Link to={`/menus/${type}/${item._id}`}>
         <Button>Checkout</Button>
       </Link>
+        ))
+      }
+
+
+      {/* <Items items={items} /> */}
+
+      
     </Container>
   );
 };
