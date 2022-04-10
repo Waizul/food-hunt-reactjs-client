@@ -19,6 +19,7 @@ import Breakfast from "./components/Breakfast";
 import Dinner from './components/Dinner';
 import Lunch from './components/Lunch';
 import Cart from "./pages/Cart";
+import Delivery from './pages/Delivery';
 
 
 const NavContainer = styled.div`
@@ -63,6 +64,14 @@ function App() {
             element={
               <PrivateRoute>
                 <Order />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/delivery"
+            element={
+              <PrivateRoute>
+                <Delivery />
               </PrivateRoute>
             }
           />

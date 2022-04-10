@@ -44,7 +44,7 @@ const grandTotal = (total + tax + deliveryFee - discount)
 					{grandTotal.toFixed(2)}
 				</div>
 				{/* {children} */}
-				<Link to='/order'>
+				<Link to='/delivery'>
 
 				<Button>Place Order</Button>
 				</Link>
